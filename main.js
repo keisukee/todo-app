@@ -13,7 +13,7 @@ const createTodoCard = (form) => {
     taskLevel = 'whenever';
   }
   const html = `
-  <li class="card-lg">
+  <li class="card-lg task-element">
     <p><span class="card-sm ${taskLevel}">${form.category.value}</span>${form.task.value}</p>
   </li>
   `;
@@ -35,7 +35,8 @@ addTaskForm.addEventListener('submit', e => {
 
 let isDraged = false;
 
-todos.onclick = function(event) {
+const judgeObjDraged = (event) => {
+  console.log("called");
   if (isDraged === true) {
     isDraged = false;
   } else {
@@ -43,7 +44,7 @@ todos.onclick = function(event) {
   }
 }
 
-let onMouseMove = function(event){
+const onMouseMove = (event) => {
   if (isDraged === false) {
     return;
   }
@@ -54,4 +55,25 @@ let onMouseMove = function(event){
   todos.style.top = (y-height/2) + "px";
   todos.style.left = (x-width/2) + "px";
 }
+
+todos.onclick = judgeObjDraged;
 todos.addEventListener("mousemove", onMouseMove);
+
+// document.onclick = (event) => {
+//   let todoElements = document.getElementsByClassName('task-element');
+//   for (let i = 0; i < todoElements.length; i++) {
+//     console.log("onclick");
+//     todoElements[i].onclick = judgeObjDraged;
+//     todoElements[i].addEventListener("mousemove", function() {
+//       onMouseMove(event, todoElements[i]);
+//     });
+//   }
+// }
+
+// if (todoElements.length !== 0) {
+//   console.log("length", todoElements.length);
+//   for (let i = 0; i < todoElements.length; i++) {
+//     todoElements[i].onclick = judgeObjDraged;
+//     todoElements[i].addEventListener("mousemove", onMouseMove);
+//   }
+// }
