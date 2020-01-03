@@ -7,7 +7,27 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-
+  <form id="add-todo">
+    <div>
+      <label for="task">Enter your task: </label>
+      <input type="text" task="task" id="task">
+    </div>
+    <div>
+      <label for="category">Choose a cateogory:</label>
+      <select name="category" id="cateogry">
+          <option value="">カテゴリー</option>
+          <option value="緊急">緊急</option>
+          <option value="急ぎ">急ぎ</option>
+          <option value="なる早">なる早</option>
+          <option value="おてすき">おてすき</option>
+      </select>
+    </div>
+    <div>
+      <input type="submit" value="submit">
+    </div>
+  </form>
+  <ul id="todos">
+  </ul>
   <script src="main.js"></script>
 </body>
 </html>
